@@ -1,5 +1,5 @@
 #include<iostream>
 #include<math.h>
 
-int mse(char*, char*, int);
-double psnr(double);
+void mse(unsigned char*, unsigned char*, int, int*);
+double psnr(int);
