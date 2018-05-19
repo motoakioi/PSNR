@@ -37,17 +37,33 @@ int height = std::atoi( argv[4] );
 int all_pixels = width * height;
 int size_of_1_farme = all_pixels * size_cal( in_format );
 
-
 unsigned char data1[size_of_1_farme];
 unsigned char data2[size_of_1_farme];
+
+int frame_number = 0;
+int frame_number_of_none_zero = 0;
+double sum_psnr = 0.0;
+
 while( !video1.eof() ){
+	double mse_val = 0.0;
+	double psnr_val = 0.0;
+
 	video1.read( (char*)data1, size_of_1_farme );
 	video2.read( (char*)data2, size_of_1_farme );
-	int out_mse = 0;
 
-	mse( data1, data2, all_pixels, &out_mse); 
+	mse( data1, data2, &all_pixels, &mse_val);
+	psnr( &mse_val, &psnr_val ); 
 
+	std::cout<< "Frame(" << frame_number << ") PSNR[dB] : " << psnr_val <<std::endl;
+	frame_number++;
+
+	if( mse_val != 0 ){
+		sum_psnr += psnr_val;
+		frame_number_of_none_zero++;
+	}
 }
+
+std::cout<< "Average PSNR : " << ( sum_psnr / frame_number_of_none_zero ) << std::endl;
 
 video1.close();
 video2.close();
