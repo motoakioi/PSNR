@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+psnr
+
+
+# other
+.DS_Store
