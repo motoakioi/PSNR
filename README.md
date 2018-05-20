@@ -1,11 +1,13 @@
 # PSNR
 Computing Peak Signal to Noise Ratio(PSNR)
 
-Usege : 
-$ ./psnr video1.yuv video2.yuv width height format
+Usege :  
+`$ ./psnr video1.yuv video2.yuv width height format`  
+Only YUV420, YUV444 suported  
 
-	#Only YUV420 suported
- 
- Compiling :
- $ make
+Example :   
+`$ ./psnr video1.yuv video2.yuv 640 360 420`   
+
+Compiling :  
+`$ make`  
 
