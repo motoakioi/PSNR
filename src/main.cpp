@@ -7,20 +7,20 @@
 int main(int argc, char* argv[]){
 
 if( argc != 6){
-	std::cout<< "Error! : " <<std::endl;
-	std::cout<< "usege : file1.yuv, file2.yuv, width, height, format" <<std::endl;
+	std::cerr<< "Error! : " <<std::endl;
+	std::cerr<< "usege : file1.yuv, file2.yuv, width, height, format" <<std::endl;
 	return -1;
 }
 
 std::ifstream video1( argv[1], std::ios::in | std::ios::binary );
 std::ifstream video2( argv[2], std::ios::in | std::ios::binary );
 if( !video1 || !video2 ){
-	std::cout<< "Error! : can't open file." << std::endl;
+	std::cerr<< "Error! : can't open file." << std::endl;
 	return -1;
 }
 
 if( atoi(argv[3]) <= 0 || atoi(argv[4]) <= 0 ){
-	std::cout<< "Error! : resolution should not be 0." <<std::endl;
+	std::cerr<< "Error! : resolution should not be 0." <<std::endl;
 	return -1;
 }
 
@@ -28,7 +28,7 @@ int in_format = atoi(argv[5]);
 if( in_format == 420){
 
 }else{
-	std::cout<< "Error! : invalid format." <<std::endl;
+	std::cerr<< "Error! : invalid format." <<std::endl;
 	return -1;
 }
 
