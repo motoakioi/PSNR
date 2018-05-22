@@ -9,5 +9,5 @@ Example :
 `$ ./psnr video1.yuv video2.yuv 640 360 420`   
 
 Compiling :  
-`$ make`  
+`$ cmake . && make`  
 
