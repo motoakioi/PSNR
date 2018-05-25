@@ -51,7 +51,7 @@ while( !video1.eof() ){
 	video1.read( (char*)data1, size_of_1_farme );
 	video2.read( (char*)data2, size_of_1_farme );
 
-	mse( data1, data2, &all_pixels, &mse_val);
+	mse( data1, data2, &size_of_1_farme, &mse_val);
 	psnr( &mse_val, &psnr_val ); 
 
 	std::cout<< "Frame(" << frame_number << ") PSNR[dB] : " << psnr_val <<std::endl;
@@ -63,7 +63,7 @@ while( !video1.eof() ){
 	}
 }
 
-std::cout<< "Average PSNR : " << ( sum_psnr / frame_number_of_none_zero ) << std::endl;
+std::cout<< "Average PSNR : " << ( sum_psnr / (double)frame_number_of_none_zero ) << std::endl;
 
 video1.close();
 video2.close();
