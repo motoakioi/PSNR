@@ -42,7 +42,10 @@ unsigned char data2[size_of_1_farme];
 
 int frame_number = 0;
 int frame_number_of_none_zero = 0;
-double sum_psnr = 0.0;
+//double sum_psnr = 0.0;
+double sum_mse = 0.0;
+double ave_psnr;
+double ave_mse;
 
 while( !video1.eof() ){
 	double mse_val = 0.0;
@@ -58,12 +61,16 @@ while( !video1.eof() ){
 	frame_number++;
 
 	if( mse_val != 0 ){
-		sum_psnr += psnr_val;
+		sum_mse += mse_val;
 		frame_number_of_none_zero++;
 	}
 }
 
-std::cout<< "Average PSNR : " << ( sum_psnr / (double)frame_number_of_none_zero ) << std::endl;
+ave_mse = sum_mse / frame_number_of_none_zero;
+psnr( &ave_mse, &ave_psnr );
+
+//std::cout<< "Average PSNR : " << ( sum_psnr / (double)frame_number_of_none_zero ) << std::endl;
+std::cout<< "Average PSNR : " << ave_psnr << std::endl;
 
 video1.close();
 video2.close();
