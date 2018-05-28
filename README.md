@@ -8,6 +8,6 @@ Only YUV420, YUV444 suported
 Example :   
 `$ ./psnr video1.yuv video2.yuv 640 360 420`   
 
-## Building project
-`$ cmake . && make`
+Compiling :  
+`$ cmake . && make`  
 
