@@ -47,12 +47,12 @@ double sum_mse = 0.0;
 double ave_psnr;
 double ave_mse;
 
+video1.read( (char*)data1, size_of_1_farme );
+video2.read( (char*)data2, size_of_1_farme );
+
 while( !video1.eof() ){
 	double mse_val = 0.0;
 	double psnr_val = 0.0;
-
-	video1.read( (char*)data1, size_of_1_farme );
-	video2.read( (char*)data2, size_of_1_farme );
 
 	mse( data1, data2, &size_of_1_farme, &mse_val);
 	psnr( &mse_val, &psnr_val ); 
@@ -64,6 +64,9 @@ while( !video1.eof() ){
 		sum_mse += mse_val;
 		frame_number_of_none_zero++;
 	}
+
+	video1.read( (char*)data1, size_of_1_farme );
+	video2.read( (char*)data2, size_of_1_farme );
 }
 
 ave_mse = sum_mse / frame_number_of_none_zero;
